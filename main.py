@@ -43,7 +43,10 @@ def parens_match_iterative(mylist):
     False
     """
     ### TODO
-    pass
+    count = iterate(parens_update, 0, mylist)
+    if count < 0:
+        return False
+    return count == 0
 
 
 def parens_update(current_output, next_input):
@@ -58,8 +61,13 @@ def parens_update(current_output, next_input):
     Returns:
       the updated value of `current_output`
     """
-    ###TODO
-    pass
+    if next_input == '(': 
+        return current_output +1
+    elif next_input == ')':
+        return current _output -1
+    else: 
+        return current_output
+    
 
 
 def test_parens_match_iterative():
@@ -88,6 +96,11 @@ def parens_match_scan(mylist):
     
     """
     ###TODO
+    maplist =  map(paren_map, mylist)
+    scan_result = scan(lambda x, y: x + y, 0, maplist)
+    reduced = reduce(min_f, 0, scan_result[0]) == 0 and scan_result[1] == 0
+    if reduced >=0:
+        return reduced 
     pass
 
 def scan(f, id_, a):
@@ -161,6 +174,26 @@ def parens_match_dc_helper(mylist):
       parens_match_dc to return the final True or False value
     """
     ###TODO
+    n = len(mylist)
+    
+    if n == 0: #base case
+        return 0, 0 
+    elif n ==1:
+        if mylist[0] == "("
+        return (1, 0)
+    elif mylist[0] == ")"
+        return (0,1)
+    
+    leftlist = mylist[:n//2]
+    rightlist = mylist[n//2:]
+    n_unmatched_left_a, n_unmatched_right_a = parens_match_dc_helper(leftlist)
+    n_unmatched_left_b, n_unmatched_right_b = parens_match_dc_helper(rightlist)
+    
+    #given return values
+    n_unmatched_left = max(0, n_unmatched_left_a - n_unmatched_right_b) + n_unmatched_left_b
+    n_unmatched_right = max(0, n_unmatched_right_b -n_unmatched_left_a) + n_unmatched_right_a
+    return(n_unmatched_right, n_unmatched_left)
+                           
     pass
     
 
