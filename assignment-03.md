@@ -34,7 +34,7 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **enter answer in `answers.md`**
 
-.  
+.  O(n) work and O(n) span
 . 
 
 
@@ -50,8 +50,8 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **enter answer in `answers.md`**
 
-.  
-.  
+.  map has O(n) work, O(1) span
+.  scan has O(n) work, O(lg n) span
 
 
 
@@ -71,6 +71,7 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **enter answer in `answers.md`**
 
-.  
+.  this would be W(n) = 2W(n/2)+1, it is leaf dominated and the number of leaves would end up being 2^lgn and therefore it would be **O(n)**
+span is S(n) = S(n/2)+1, span is balanced because 2W(n/2) cancels, so span would end up being **O(lg n)**
 . 
 
